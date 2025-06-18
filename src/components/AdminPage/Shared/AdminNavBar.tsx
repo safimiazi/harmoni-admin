@@ -4,11 +4,9 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { IoIosSearch } from "react-icons/io";
-import { IoMdNotificationsOutline } from "react-icons/io";
 import { FaUserCheck } from "react-icons/fa6";
 import { IoSettingsOutline } from "react-icons/io5";
 import { TbLogout } from "react-icons/tb";
-
 import profile from "../../../assets/images/profile.png";
 
 const AdminNavBar = () => {

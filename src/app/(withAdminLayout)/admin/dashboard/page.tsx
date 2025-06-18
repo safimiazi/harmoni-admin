@@ -4,7 +4,6 @@ import CalculateCard from "@/components/reuseabelComponents/calculateCard";
 import Title from "@/components/reuseabelComponents/Title";
 import AllCharts from "@/components/Dashboard/AllCharts";
 import Wrapper from "@/components/wrapper/wrapper";
-import { Calendar } from "@/components/Dashboard/Calendar";
 
 const DashboardPage = () => {
   return (
@@ -17,7 +16,7 @@ const DashboardPage = () => {
         </div>
         <div className="space-y-5">
           <h1 className="text-[var(--color-accent)] text-sm sm:text-lg tracking-[-0.4px] leading-[12px] sm:leading-[24px] font-semibold font-Robot">
-            Booking Trends & Revenue Insights
+            Total Registration & Earning Insights
           </h1>
           <AllCharts />
         </div>

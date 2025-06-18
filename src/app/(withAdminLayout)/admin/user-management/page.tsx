@@ -1,11 +1,17 @@
-import Management from "@/components/Dashboard/management";
+import { UserListTable } from "@/components/AdminPage/UserManagement/VenueListTable";
+import CalculateCard from "@/components/reuseabelComponents/calculateCard";
+import Wrapper from "@/components/wrapper/wrapper";
+import React from "react";
 
-const UserManagementPage = () => {
+const userManagementPage = () => {
   return (
-    <div>
-      <Management />
-    </div>
+    <Wrapper>
+      <div className="space-y-[28px]">
+        <CalculateCard />
+        <UserListTable />
+      </div>
+    </Wrapper>
   );
 };
 
-export default UserManagementPage;
+export default userManagementPage;
