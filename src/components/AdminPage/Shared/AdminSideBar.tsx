@@ -10,11 +10,7 @@ import { FaRegUser } from "react-icons/fa6";
 import { PiBuildingApartmentFill } from "react-icons/pi";
 import { SlCalender } from "react-icons/sl";
 import { SiSimpleanalytics } from "react-icons/si";
-import {
-  RiSupabaseLine,
-  RiArrowLeftSLine,
-  RiArrowRightSLine,
-} from "react-icons/ri";
+import { RiArrowLeftSLine, RiArrowRightSLine } from "react-icons/ri";
 import { IoSettingsOutline } from "react-icons/io5";
 import { TbLogout } from "react-icons/tb";
 import logo from "../../../assets/icon/logo1.png";
@@ -31,15 +27,19 @@ interface NavItem {
 
 const navItems: NavItem[] = [
   { title: "Dashboard", href: "/admin/dashboard", icon: MdDashboard },
-  { title: "User Management", href: "/admin/user-management", icon: FaRegUser },
+  {
+    title: "Course Management",
+    href: "/admin/course-management",
+    icon: FaRegUser,
+  },
   {
     title: "Venue Management",
-    href: "/admin/venue-management",
+    href: "/admin/user-management",
     icon: PiBuildingApartmentFill,
   },
   {
-    title: "Booking & Payment",
-    href: "/admin/booking-payment",
+    title: "All Payment",
+    href: "/admin/all-payment",
     icon: SlCalender,
   },
   {

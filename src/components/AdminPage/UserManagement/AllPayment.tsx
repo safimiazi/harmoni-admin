@@ -245,7 +245,7 @@ export const columns = (
           Chat
         </Link>
         <Link
-          href={`/admin/booking-payment/details/${row.original.id}`}
+          href={`/admin/all-payment/details/${row.original.id}`}
           className="text-[var(--color-accent)] underline text-sm font-medium hover:text-opacity-80 transition"
         >
           Details
@@ -256,7 +256,7 @@ export const columns = (
 ];
 
 // ✅ BookingPayment component
-export function BookingPayment() {
+export function AllPayment() {
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []

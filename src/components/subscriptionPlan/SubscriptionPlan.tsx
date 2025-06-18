@@ -177,7 +177,7 @@ export default function SubscriptionPlanControl() {
               }}
               className="bg-[#003366] hover:bg-[#0a3b6d]/90"
             >
-              <Plus className="h-4 w-4 mr-2" />
+              <Plus className="h-4 w-4 mr-2 cursor-pointer" />
               Add New Plan
             </Button>
           </DialogTrigger>
@@ -389,7 +389,7 @@ export default function SubscriptionPlanControl() {
                         onClick={() => openEditDialog(plan)}
                         className="text-[#003366] hover:text-[#0a3b6d]"
                       >
-                        <Edit2 className="h-4 w-4 mr-1" /> Edit
+                        <Edit2 className="h-4 w-4 mr-1 cursor-pointer" /> Edit
                       </Button>
                       <Button
                         variant="ghost"
@@ -397,7 +397,8 @@ export default function SubscriptionPlanControl() {
                         onClick={() => handleDeletePlan(plan.id)}
                         className="text-red-500 hover:text-red-700"
                       >
-                        <Trash2 className="h-4 w-4 mr-1" /> Delete
+                        <Trash2 className="h-4 w-4 mr-1 cursor-pointer" />{" "}
+                        Delete
                       </Button>
                     </div>
                   </TableCell>

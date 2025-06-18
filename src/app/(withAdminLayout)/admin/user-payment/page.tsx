@@ -1,8 +1,4 @@
 "use client";
-
-import InputForm from "@/components/AdminPage/VenueManagement/InputForm";
-import MapReuseComponent from "@/components/AdminPage/Shared/MapReuseComponent";
-import PaymentProfile from "@/components/AdminPage/VenueManagement/PaymentProfile";
 import ReuseProfile from "@/components/AdminPage/Shared/ReuseProfile";
 import Wrapper from "@/components/wrapper/wrapper";
 
@@ -11,9 +7,12 @@ const UserPayment = () => {
     <div>
       <ReuseProfile />
       <Wrapper>
-        <PaymentProfile />
-        <MapReuseComponent />
-        <InputForm />
+        <h1>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Excepturi
+          velit ratione a fugit error molestias eum dolorum, explicabo
+          accusantium? Culpa sunt deserunt placeat consequatur nam, qui
+          laboriosam sint. Explicabo, unde?
+        </h1>
       </Wrapper>
     </div>
   );

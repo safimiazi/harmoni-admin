@@ -6,10 +6,17 @@ import { usePathname, useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-import { MdDashboard } from "react-icons/md";
-import { FaRegUser } from "react-icons/fa6";
-import { PiBuildingApartmentFill } from "react-icons/pi";
-import { SlCalender } from "react-icons/sl";
+import {
+  MdDashboard,
+  MdMenuBook,
+  MdOutlinePayments,
+  MdVideoSettings,
+  MdContactMail,
+  MdOutlineQuestionAnswer,
+  MdOutlineFeaturedPlayList,
+  MdOutlineAssignment,
+} from "react-icons/md";
+import { FaUserGroup } from "react-icons/fa6";
 import { SiSimpleanalytics } from "react-icons/si";
 import { RiArrowLeftSLine, RiArrowRightSLine } from "react-icons/ri";
 import { IoSettingsOutline } from "react-icons/io5";
@@ -34,23 +41,56 @@ interface NavItem {
 
 const navItems: NavItem[] = [
   { title: "Dashboard", href: "/admin/dashboard", icon: MdDashboard },
-  { title: "User Management", href: "/admin/user-management", icon: FaRegUser },
   {
-    title: "Venue Management",
-    href: "/admin/venue-management",
-    icon: PiBuildingApartmentFill,
+    title: "All Users ",
+    href: "/admin/user-management",
+    icon: FaUserGroup,
   },
   {
-    title: "Booking & Payment",
-    href: "/admin/booking-payment",
-    icon: SlCalender,
+    title: "Course Management",
+    href: "/admin/course-management",
+    icon: MdMenuBook,
   },
-
   {
-    title: "Subscription Plan",
+    title: "Module Management",
+    href: "/admin/module-management",
+    icon: MdOutlineFeaturedPlayList,
+  },
+  {
+    title: "Content Management",
+    href: "/admin/content-management",
+    icon: MdVideoSettings,
+  },
+  {
+    title: "All Payment",
+    href: "/admin/all-payment",
+    icon: MdOutlinePayments,
+  },
+  {
+    title: "Subscription Plans",
     href: "/admin/subscription-plan",
     icon: IoSettingsOutline,
   },
+  {
+    title: "Contact Messages",
+    href: "/admin/contact-messages",
+    icon: MdContactMail,
+  },
+  {
+    title: "FAQ Management",
+    href: "/admin/faq-management",
+    icon: MdOutlineQuestionAnswer,
+  },
+  {
+    title: "Terms Management",
+    href: "/admin/terms-management",
+    icon: MdOutlineAssignment,
+  },
+  /* {
+    title: "Notifications",
+    href: "/admin/notifications",
+    icon: MdOutlineNotifications,
+  }, */
   {
     title: "Reports & Analytics",
     href: "/admin/report-analysis",
@@ -91,9 +131,9 @@ const AdminLayout = ({ children }: { children: React.ReactNode }) => {
     pathname === "/admin/active-user-details" ||
     pathname === "/admin/user-payment" ||
     pathname === "/admin/memnoy-refund/" ||
-    pathname.startsWith("/admin/booking-payment/") ||
+    pathname.startsWith("/admin/all-payment/") ||
     pathname.startsWith("/admin/memnoy-refund") ||
-    pathname.startsWith("/admin/venue-management/");
+    pathname.startsWith("/admin/user-management/");
 
   return (
     <div className="flex flex-col min-h-screen bg-[#F4F4F4]">
@@ -107,12 +147,13 @@ const AdminLayout = ({ children }: { children: React.ReactNode }) => {
         >
           <div className="flex items-center justify-between mb-6 h-[48px]">
             <div className="flex items-center gap-2">
-              <div className="w-[42px] h-[46px]">
-                <Image src={logo} alt="Logo" width={52} height={52} />
+              <div className="w-[52px] h-[56px]">
+                <Image src={logo} alt="Logo" width={62} height={62} />
               </div>
               {!collapsed && (
                 <h1 className="text-[28px] font-bold leading-normal font-['Sansita_Swashed'] bg-gradient-to-b from-[#408DF0] to-[#0E579E] text-transparent bg-clip-text">
-                  Glow Up
+                  <span className="text-[#FEE985]">Glow </span>{" "}
+                  <span className="text-[#FEFCEC]">Up</span>
                 </h1>
               )}
             </div>
@@ -364,15 +405,15 @@ export default AdminLayout;
 
 // const navItems: NavItem[] = [
 //   { title: "Dashboard", href: "/admin/dashboard", icon: MdDashboard },
-//   { title: "User Management", href: "/admin/user-management", icon: FaRegUser },
+//   { title: "User Management", href: "/admin/course-management", icon: FaRegUser },
 //   {
 //     title: "Venue Management",
-//     href: "/admin/venue-management",
+//     href: "/admin/user-management",
 //     icon: PiBuildingApartmentFill,
 //   },
 //   {
-//     title: "Booking & Payment",
-//     href: "/admin/booking-payment",
+//     title: "All Payment",
+//     href: "/admin/all-payment",
 //     icon: SlCalender,
 //   },
 //   {
@@ -406,9 +447,9 @@ export default AdminLayout;
 //     pathname === "/admin/active-user-details" ||
 //     pathname === "/admin/user-payment" ||
 //     pathname === "/admin/memnoy-refund/" ||
-//     pathname.startsWith("/admin/booking-payment/") ||
+//     pathname.startsWith("/admin/all-payment/") ||
 //     pathname.startsWith("/admin/memnoy-refund") ||
-//     pathname.startsWith("/admin/venue-management/");
+//     pathname.startsWith("/admin/user-management/");
 
 //   return (
 //     <div className="flex flex-col min-h-screen bg-[#F4F4F4] overflow-hidden ">

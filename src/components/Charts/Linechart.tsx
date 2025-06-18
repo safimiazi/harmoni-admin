@@ -20,14 +20,14 @@ import {
 // }
 
 export function LineCharts() {
-  const { data, isLoading } = useGetDashboardAnalyticsQuery();
+  const { data } = useGetDashboardAnalyticsQuery();
   console.log(data?.data?.monthlyBookingTrends, "linecharts");
   return (
     <div className="rounded-2xl bg-[var(--color-accent)] p-6 text-white h-full shadow-md w-full sm:w-1/2 font-Robot">
       <div className="flex justify-between items-start space-y-8">
         <div className="space-y-3">
           <p className="text-[15px] leading-[20px] font-bold text-[var(--color-boldTextTwo)]">
-            Bookings
+            Total Registrations
           </p>
           <div className="flex items-center space-x-2">
             <h2 className="text-2xl font-bold text-[var(--color-boldTextTwo)]">
