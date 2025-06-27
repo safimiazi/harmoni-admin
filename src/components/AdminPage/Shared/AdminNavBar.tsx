@@ -8,11 +8,19 @@ import { FaUserCheck } from "react-icons/fa6";
 import { IoSettingsOutline } from "react-icons/io5";
 import { TbLogout } from "react-icons/tb";
 import profile from "../../../assets/images/profile.png";
-import { useGetMeQuery } from "@/redux/features/user/adminApi";
+import { useGetMeQuery, useLogoutAdminMutation } from "@/redux/features/user/adminApi";
 
 const AdminNavBar = () => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const { data: user, isLoading, error } = useGetMeQuery({});
+  const [logoutAdmin] = useLogoutAdminMutation()
+
+  const handleLogout = async () => {
+        console.log("hello")
+
+    const res = await logoutAdmin({});
+    console.log(res)
+  }
 
   const toggleDropdown = () => setDropdownOpen(!isDropdownOpen);
 
@@ -73,16 +81,11 @@ const AdminNavBar = () => {
 
                 <div className="my-1 border-t border-gray-100"></div>
 
-                <Link
-                  href="#"
-                  className="flex items-center gap-3 px-5 py-2 text-sm text-gray-800 hover:bg-gray-100 transition-colors duration-150"
-                >
-                  <IoSettingsOutline className="text-gray-600 text-lg" />
-                  <span>Settings</span>
-                </Link>
+
 
                 <Link
                   href="#"
+                  onClick={handleLogout}
                   className="flex items-center gap-3 px-5 py-2 text-sm text-gray-800 hover:bg-gray-100 transition-colors duration-150"
                 >
                   <TbLogout className="text-red-500 text-lg" />

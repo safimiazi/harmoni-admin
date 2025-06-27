@@ -15,7 +15,8 @@ interface ILlmModelForm {
     title: string
     name: string
     description: string
-    price: number
+    inputTokenPrice: number
+    outputTokenPrice: number
     provider: string
     thumbnail?: File | null
 }
@@ -24,7 +25,8 @@ const initialFormState: ILlmModelForm = {
     title: '',
     name: '',
     description: '',
-    price: 0,
+    inputTokenPrice: 0,
+    outputTokenPrice: 0,
     provider: '',
     thumbnail: null,
 }
@@ -85,7 +87,8 @@ const LlmModelPage = () => {
             title: model.title,
             name: model.name,
             description: model.description,
-            price: model.price,
+            inputTokenPrice: model.inputTokenPrice,
+            outputTokenPrice: model.outputTokenPrice,
             provider: model.provider._id || model.provider,
             thumbnail: null,
         })
@@ -135,10 +138,20 @@ const LlmModelPage = () => {
                         <input
                             type="number"
                             step="0.001"
-                            name="price"
-                            value={formData.price}
+                            name="inputTokenPrice"
+                            value={formData.inputTokenPrice}
                             onChange={handleChange}
-                            placeholder="Price (USD)"
+                            placeholder="input Token Price (USD)"
+                            required
+                            className="border border-gray-300 rounded-md px-5 py-3 focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none text-gray-900 placeholder-gray-400"
+                        />
+                        <input
+                            type="number"
+                            step="0.001"
+                            name="outputTokenPrice"
+                            value={formData.outputTokenPrice}
+                            onChange={handleChange}
+                            placeholder="Output Token Price (USD)"
                             required
                             className="border border-gray-300 rounded-md px-5 py-3 focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none text-gray-900 placeholder-gray-400"
                         />
@@ -204,7 +217,8 @@ const LlmModelPage = () => {
                                 <th className="p-4 w-36">Thumbnail</th>
                                 <th className="p-4">Title</th>
                                 <th className="p-4">Name</th>
-                                <th className="p-4">Price (USD)</th>
+                                <th className="p-4">Input Token Price (USD)</th>
+                                <th className="p-4">Output Token Price (USD)</th>
                                 <th className="p-4">Provider</th>
                                 <th className="p-4 text-center w-36">Actions</th>
                             </tr>
@@ -225,7 +239,8 @@ const LlmModelPage = () => {
                                         </td>
                                         <td className="p-4 font-semibold text-gray-900">{model.title}</td>
                                         <td className="p-4 text-gray-700">{model.name}</td>
-                                        <td className="p-4 font-mono">${model.price.toFixed(3)}</td>
+                                        <td className="p-4 font-mono">${model.inputTokenPrice?.toFixed(3)}</td>
+                                        <td className="p-4 font-mono">${model.outputTokenPrice?.toFixed(3)}</td>
                                         <td className="p-4 text-gray-700">{model.provider?.name || model.provider}</td>
                                         <td className="p-4 text-center">
                                             <div className="flex justify-center gap-3">

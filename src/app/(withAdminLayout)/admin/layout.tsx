@@ -64,6 +64,11 @@ const navItems: NavItem[] = [
     href: "/admin/eachalab-model",
     icon: PiArrowsInCardinalLight,
   },
+  {
+    title: "Configure",
+    href: "/admin/configure",
+    icon: PiArrowsInCardinalLight,
+  },
   
 ];
 

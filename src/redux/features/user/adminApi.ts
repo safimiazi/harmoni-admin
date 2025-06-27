@@ -266,6 +266,42 @@ const userApi = baseApi.injectEndpoints({
         }),
 
 
+
+        //configure::
+
+
+
+
+        putConfigure: builder.mutation({
+            query: ({ id, body }) => ({
+                url: `configure/update-configure/${id}`,
+                method: 'PUT',
+                body: body,
+            }),
+            invalidatesTags: ["eachalabModel"]
+
+        }),
+
+        getConfigure: builder.query({
+            query: () => ({
+                url: "configure/get-configure",
+                method: "GET",
+
+            }),
+            providesTags: ["eachalabModel"]
+        }),
+
+        logoutAdmin: builder.mutation({
+            query: () => ({
+                url: `auth/logout`,
+                method: 'POST',
+            }),
+            invalidatesTags: ["eachalabModel"]
+
+        }),
+
+
+
     }),
 
     overrideExisting: false,
@@ -299,6 +335,10 @@ export const { useGetMeQuery,
     useUpdateEachalabModelMutation,
     useGetAllEachalabModelQuery,
 
+    usePutConfigureMutation,
+    useGetConfigureQuery,
+
+    useLogoutAdminMutation
 
 
 
