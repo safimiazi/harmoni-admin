@@ -79,7 +79,7 @@ const AdminSideBar = ({ children }: { children: React.ReactNode }) => {
               />
               {!collapsed && (
                 <h1 className="text-xl font-bold bg-gradient-to-r from-[#003366] to-[#518BEC] text-transparent bg-clip-text font-['Sansita_Swashed']">
-                  Glow Up
+                  HARMONI AI
                 </h1>
               )}
             </div>
@@ -113,7 +113,7 @@ const AdminSideBar = ({ children }: { children: React.ReactNode }) => {
           </nav>
 
           <div className="mt-auto">
-            <Button
+            {/* <Button
               variant="destructive"
               className={cn(
                 "w-full justify-start gap-3 text-black",
@@ -125,7 +125,7 @@ const AdminSideBar = ({ children }: { children: React.ReactNode }) => {
             >
               <TbLogout className="h-5 w-5 text-red-600" />
               {!collapsed && <span>Logout</span>}
-            </Button>
+            </Button> */}
           </div>
         </aside>
 

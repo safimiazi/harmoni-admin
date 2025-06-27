@@ -125,8 +125,8 @@ const AdminLayout = ({ children }: { children: React.ReactNode }) => {
               </div>
               {!collapsed && (
                 <h1 className="text-[28px] font-bold leading-normal font-['Sansita_Swashed'] bg-gradient-to-b from-[#408DF0] to-[#0E579E] text-transparent bg-clip-text">
-                  <span className="text-[#FEE985]">Glow </span>{" "}
-                  <span className="text-[#FEFCEC]">Up</span>
+                  <span className="text-[#FEE985]">HARMONI </span>{" "}
+                  <span className="text-[#FEFCEC]"></span>
                 </h1>
               )}
             </div>
@@ -175,7 +175,7 @@ const AdminLayout = ({ children }: { children: React.ReactNode }) => {
           </nav>
 
           <div className="mt-auto mb-4">
-            <button
+            {/* <button
               onClick={handleLogout}
               className={cn(
                 "group flex items-center w-full gap-3 px-3 py-2 rounded-lg transition-colors hover:bg-[#3A1A6A] text-white",
@@ -186,7 +186,7 @@ const AdminLayout = ({ children }: { children: React.ReactNode }) => {
               {!collapsed && (
                 <span className="text-sm font-medium text-white">Log Out</span>
               )}
-            </button>
+            </button> */}
           </div>
         </motion.aside>
 
@@ -203,7 +203,7 @@ const AdminLayout = ({ children }: { children: React.ReactNode }) => {
             <div className="flex items-center gap-2">
               <Image src={logo} alt="Logo" width={32} height={32} />
               <h1 className="text-xl font-bold bg-gradient-to-b from-[#408DF0] to-[#0E579E]  bg-clip-text text-white">
-                Glow Up
+                HARMONI AI
               </h1>
             </div>
           </div>
@@ -244,7 +244,7 @@ const AdminLayout = ({ children }: { children: React.ReactNode }) => {
                     <div className="flex items-center gap-2">
                       <Image src={logo} alt="Logo" width={40} height={40} />
                       <h1 className="text-2xl font-bold bg-gradient-to-b from-[#408DF0] to-[#0E579E]  bg-clip-text text-white">
-                        Glow Up
+                        HARMONI AI
                       </h1>
                     </div>
                     <button
