@@ -8,18 +8,10 @@ import { motion, AnimatePresence } from "framer-motion";
 
 import {
   MdDashboard,
-  MdMenuBook,
-  MdOutlinePayments,
-  MdVideoSettings,
-  MdContactMail,
-  MdOutlineQuestionAnswer,
   MdOutlineFeaturedPlayList,
-  MdOutlineAssignment,
 } from "react-icons/md";
 import { FaUserGroup } from "react-icons/fa6";
-import { SiSimpleanalytics } from "react-icons/si";
 import { RiArrowLeftSLine, RiArrowRightSLine } from "react-icons/ri";
-import { IoSettingsOutline } from "react-icons/io5";
 import { TbLogout } from "react-icons/tb";
 import { HiOutlineMenuAlt2 } from "react-icons/hi";
 
@@ -64,7 +56,7 @@ const AdminLayout = ({ children }: { children: React.ReactNode }) => {
   const pathname = usePathname();
   const [collapsed, setCollapsed] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+  const [, setIsMobile] = useState(false);
 
   const dispatch = useAppDispatch();
   const router = useRouter();

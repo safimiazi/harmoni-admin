@@ -2,16 +2,12 @@
 import React from "react";
 import { Button } from "../ui/button";
 import { useLoginMutation } from "@/redux/features/auth/authApi";
-import { useDispatch } from "react-redux";
-import { setUser } from "@/redux/features/auth/authSlice";
 import { Loader } from "lucide-react";
 import cookies from "js-cookie";
 import { useRouter } from "next/navigation";
-import { toast } from "sonner";
 const LoginForm = () => {
   const navigate = useRouter();
   const [login, { isLoading }] = useLoginMutation();
-  const dispatch = useDispatch();
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.target as HTMLFormElement;

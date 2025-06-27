@@ -117,7 +117,7 @@ const userApi = baseApi.injectEndpoints({
 
         }),
         getAllPricingPlan: builder.query({
-            query: ({ page = 0, limit = 10, sort = "-createdAt", searchTerm = "", isDeleted = false, isVerified = true }) => ({
+            query: ({ page = 0, limit = 10, sort = "-createdAt", searchTerm = "", isDeleted = false }) => ({
                 url: "pricing/get-all-pricing",
                 method: "GET",
                 params: {

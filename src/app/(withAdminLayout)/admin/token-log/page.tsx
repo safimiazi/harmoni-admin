@@ -3,7 +3,6 @@
 import { useTokenLogQuery } from "@/redux/features/user/userApi";
 import { useState } from "react";
 import profile from "../../../../assets/images/profile.png";
-import Link from "next/link";
 import toast from "react-hot-toast";
 
 const TokenLogPage = () => {
