@@ -1,6 +1,6 @@
 "use client";
 
-import { useGetAllVerifiedUserQuery } from "@/redux/features/user/userApi";
+import { useGetAllVerifiedUserQuery } from "@/redux/features/user/adminApi";
 import { useState } from "react";
 import profile from "../../assets/images/profile.png";
 

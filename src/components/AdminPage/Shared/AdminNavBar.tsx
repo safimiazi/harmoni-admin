@@ -8,7 +8,7 @@ import { FaUserCheck } from "react-icons/fa6";
 import { IoSettingsOutline } from "react-icons/io5";
 import { TbLogout } from "react-icons/tb";
 import profile from "../../../assets/images/profile.png";
-import { useGetMeQuery } from "@/redux/features/user/userApi";
+import { useGetMeQuery } from "@/redux/features/user/adminApi";
 
 const AdminNavBar = () => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);

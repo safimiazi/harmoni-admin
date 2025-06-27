@@ -7,7 +7,7 @@ import {
     useDeletePricingMutation,
     useGetAllPricingPlanQuery,
     useUpdatePricingMutation,
-} from '@/redux/features/user/userApi'
+} from '@/redux/features/user/adminApi'
 import React, { useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
 

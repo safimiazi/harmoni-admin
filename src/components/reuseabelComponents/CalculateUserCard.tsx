@@ -1,6 +1,6 @@
 "use client";
 
-import { useGetDashboardStatsQuery } from "@/redux/features/user/userApi";
+import { useGetDashboardStatsQuery } from "@/redux/features/user/adminApi";
 import React from "react";
 
 const CalculateUserCard = () => {

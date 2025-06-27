@@ -1,7 +1,7 @@
 "use client";
 
 import Wrapper from "@/components/wrapper/wrapper";
-import { useGetSingleUserQuery,  useToggleUserDeleteMutation} from "@/redux/features/user/userApi";
+import { useGetSingleUserQuery,  useToggleUserDeleteMutation} from "@/redux/features/user/adminApi";
 import { useParams } from "next/navigation";
 import React, { useState, useEffect } from "react";
 import toast from "react-hot-toast";

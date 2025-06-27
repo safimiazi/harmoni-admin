@@ -1,6 +1,6 @@
 "use client";
 
-import { useGetAllUserQuery } from "@/redux/features/user/userApi";
+import { useGetAllUserQuery } from "@/redux/features/user/adminApi";
 import { useState } from "react";
 import profile from "../../../assets/images/profile.png";
 import { View } from "lucide-react";

@@ -16,7 +16,7 @@ import {
   useGetMeQuery,
   useUpdateProfileImageMutation,
   useUpdateUserDataMutation,
-} from "@/redux/features/user/userApi";
+} from "@/redux/features/user/adminApi";
 
 const AdminProfile: React.FC = () => {
   const fileInputRef = useRef<HTMLInputElement | null>(null);

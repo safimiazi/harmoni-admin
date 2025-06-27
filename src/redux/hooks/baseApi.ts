@@ -15,6 +15,6 @@ export const baseApi = createApi({
       return headers;
     },
   }),
-  tagTypes: ["User","pricing"],
+  tagTypes: ["User","pricing", "LlmProvider", "LlmModel", "eachalabModel"],
   endpoints: () => ({}),
 });

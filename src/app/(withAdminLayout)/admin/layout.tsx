@@ -49,6 +49,21 @@ const navItems: NavItem[] = [
     href: "/admin/pricing-plan",
     icon: PiArrowsInCardinalLight,
   },
+  {
+    title: "LLM Provider",
+    href: "/admin/llm-provider",
+    icon: PiArrowsInCardinalLight,
+  },
+  {
+    title: "LLM Model",
+    href: "/admin/llm-model",
+    icon: PiArrowsInCardinalLight,
+  },
+  {
+    title: "Eachalab Model",
+    href: "/admin/eachalab-model",
+    icon: PiArrowsInCardinalLight,
+  },
   
 ];
 
