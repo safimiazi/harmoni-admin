@@ -8,9 +8,11 @@ import { FaUserCheck } from "react-icons/fa6";
 import { IoSettingsOutline } from "react-icons/io5";
 import { TbLogout } from "react-icons/tb";
 import profile from "../../../assets/images/profile.png";
+import { useGetMeQuery } from "@/redux/features/user/userApi";
 
 const AdminNavBar = () => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
+  const { data: user, isLoading, error } = useGetMeQuery({});
 
   const toggleDropdown = () => setDropdownOpen(!isDropdownOpen);
 
@@ -38,7 +40,25 @@ const AdminNavBar = () => {
               className="h-10 w-10 rounded-full overflow-hidden cursor-pointer"
               onClick={toggleDropdown}
             >
-              <Image src={profile} alt="Profile" height={40} width={40} />
+              {
+                user && !isLoading && !error ? (
+                  <Image
+                    src={user?.data?.image || profile}
+                    alt="Profile"
+                    height={40}
+                    width={40}
+                    className="object-cover"
+                  />
+                ) : (
+                  <Image
+                    src={profile}
+                    alt="Default Profile"
+                    height={40}
+                    width={40}
+                    className="object-cover"
+                  />
+                )
+              }
             </div>
 
             {isDropdownOpen && (

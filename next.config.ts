@@ -6,6 +6,7 @@ const nextConfig: NextConfig = {
       "discoverholidaysbd.com",
       "ozvxzsjtzdrrwejjiomf.supabase.co",
       "i.pravatar.cc",
+      "res.cloudinary.com", // ✅ FIXED: Removed https://
     ], // Add the domain where your images are hosted
   },
   // Other configuration options can go here

@@ -1,74 +1,109 @@
+"use client";
+
+import { useGetDashboardStatsQuery } from "@/redux/features/user/userApi";
 import React from "react";
 
 const CalculateCard = () => {
+  const { data: response, isLoading, error } = useGetDashboardStatsQuery({});
+  const stats = response?.data;
+
   const data = [
     {
       title: "Overall Revenue",
-      amount: "$128,420",
-      change: "+4.2%",
-      unit: "in the last 30 days",
+      amount: stats ? `$${stats.revenue.total.toLocaleString()}` : "-",
+      unit: "total revenue earned",
     },
     {
-      title: "Total Registration",
-      amount: "8,930 users",
-      change: "+5.8%",
-      unit: "new users this month",
+      title: "Recurring Revenue",
+      amount: stats ? `$${stats.revenue.recurring.toLocaleString()}` : "-",
+      unit: "from recurring plans",
     },
     {
-      title: "Total Courses",
-      amount: "152 courses",
-      change: "+2.1%",
-      unit: "added recently",
+      title: "One-Time Revenue",
+      amount: stats ? `$${stats.revenue.oneTime.toLocaleString()}` : "-",
+      unit: "from one-time plans",
     },
     {
-      title: "Average Review",
-      amount: "4.5 / 5",
-      change: "-0.2%",
-      unit: "from user ratings",
+      title: "Total Registrations",
+      amount: stats ? `${stats.userCount} users` : "-",
+      unit: "users registered on platform",
+    },
+    {
+      title: "Verified Users",
+      amount: stats ? `${stats.verifiedUserCount}` : "-",
+      unit: "with verified email",
+    },
+ 
+    {
+      title: "Total Subscriptions",
+      amount: stats ? `${stats.subscriptionCount.total}` : "-",
+      unit: "active subscriptions",
+    },
+    {
+      title: "Recurring Subscriptions",
+      amount: stats ? `${stats.subscriptionCount.recurring}` : "-",
+      unit: "auto-renewing plans",
+    },
+    {
+      title: "One-Time Subscriptions",
+      amount: stats ? `${stats.subscriptionCount.oneTime}` : "-",
+      unit: "non-recurring plans",
     },
   ];
 
-  return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-      {data.map((single) => (
-        <div
-          key={single.title}
-          className="p-5 sm:p-7 bg-white rounded-2xl shadow-md flex flex-col justify-between"
-        >
-          {/* Top Row */}
-          <div className="flex items-center justify-between mb-2">
-            <h1 className="text-sm sm:text-base font-extrabold text-[var(--color-normalText)] font-Robot">
-              {single.title}
-            </h1>
-            <button className="cursor-pointer">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-              >
-                <path
-                  fillRule="evenodd"
-                  clipRule="evenodd"
-                  d="M5 10C3.89543 10 3 10.8954 3 12C3 13.1046 3.89543 14 5 14C6.10457 14 7 13.1046 7 12C7 10.8954 6.10457 10 5 10ZM10 12C10 10.8954 10.8954 10 12 10C13.1046 10 14 10.8954 14 12C14 13.1046 13.1046 14 12 14C10.8954 14 10 13.1046 10 12ZM17 12C17 10.8954 17.8954 10 19 10C20.1046 10 21 10.8954 21 12C21 13.1046 20.1046 14 19 14C17.8954 14 17 13.1046 17 12Z"
-                  fill="#003366"
-                />
-              </svg>
-            </button>
-          </div>
+  if (isLoading) return <p>Loading...</p>;
+  if (error) return <p className="text-red-500">Failed to load stats</p>;
 
-          {/* Bottom Row */}
-          <div>
-            <h2 className="text-xl sm:text-3xl font-semibold text-[var(--color-accent)] font-Robot tracking-[-0.68px]">
-              {single.amount}
-            </h2>
-            <p className="text-sm text-[var(--color-textRed)] font-Robot">
-              {single.change} {single.unit}
-            </p>
+  return (
+    <div className="space-y-8">
+      {/* Summary Cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+        {data.map((single) => (
+          <div
+            key={single.title}
+            className="p-5 sm:p-6 bg-white rounded-2xl shadow-md flex flex-col justify-between"
+          >
+            <div className="flex items-center justify-between mb-2">
+              <h1 className="text-sm sm:text-base font-bold text-gray-700">
+                {single.title}
+              </h1>
+            </div>
+
+            <div>
+              <h2 className="text-xl sm:text-2xl font-semibold text-indigo-600">
+                {single.amount}
+              </h2>
+              <p className="text-sm text-gray-500">{single.unit}</p>
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
+
+      {/* Subscriptions Per Plan */}
+      <div className="bg-white rounded-2xl shadow-md p-6">
+        <h2 className="text-lg font-bold mb-4 text-gray-800">Subscriptions Per Plan</h2>
+
+        {stats?.subscriptionsPerPlan?.length > 0 ? (
+          <div className="space-y-4">
+            {stats.subscriptionsPerPlan.map((plan : any) => (
+              <div
+                key={plan.planId}
+                className="border border-gray-200 rounded-lg p-4"
+              >
+                <h3 className="text-md font-semibold text-gray-700">
+                  {plan.planName}
+                </h3>
+                <p className="text-sm text-gray-500">{plan.usedCase}</p>
+                <p className="text-sm text-gray-600">
+                  <span className="font-medium">{plan.count}</span> subscriptions
+                </p>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <p className="text-sm text-gray-500">No plan data available.</p>
+        )}
+      </div>
     </div>
   );
 };

@@ -32,6 +32,7 @@ import { useAppDispatch } from "@/redux/hooks/redux-hook";
 import { logOut } from "@/redux/features/auth/authSlice";
 import cookies from "js-cookie";
 import { toast } from "sonner";
+import { PiArrowsInCardinalLight } from "react-icons/pi";
 
 interface NavItem {
   title: string;
@@ -47,55 +48,16 @@ const navItems: NavItem[] = [
     icon: FaUserGroup,
   },
   {
-    title: "Course Management",
-    href: "/admin/course-management",
-    icon: MdMenuBook,
-  },
-  {
-    title: "Module Management",
-    href: "/admin/module-management",
+    title: "Token Log",
+    href: "/admin/token-log",
     icon: MdOutlineFeaturedPlayList,
   },
   {
-    title: "Content Management",
-    href: "/admin/content-management",
-    icon: MdVideoSettings,
+    title: "Pricing Plan",
+    href: "/admin/pricing-plan",
+    icon: PiArrowsInCardinalLight,
   },
-  {
-    title: "All Payment",
-    href: "/admin/all-payment",
-    icon: MdOutlinePayments,
-  },
-  {
-    title: "Subscription Plans",
-    href: "/admin/subscription-plan",
-    icon: IoSettingsOutline,
-  },
-  {
-    title: "Contact Messages",
-    href: "/admin/contact-messages",
-    icon: MdContactMail,
-  },
-  {
-    title: "FAQ Management",
-    href: "/admin/faq-management",
-    icon: MdOutlineQuestionAnswer,
-  },
-  {
-    title: "Terms Management",
-    href: "/admin/terms-management",
-    icon: MdOutlineAssignment,
-  },
-  /* {
-    title: "Notifications",
-    href: "/admin/notifications",
-    icon: MdOutlineNotifications,
-  }, */
-  {
-    title: "Reports & Analytics",
-    href: "/admin/report-analysis",
-    icon: SiSimpleanalytics,
-  },
+  
 ];
 
 const AdminLayout = ({ children }: { children: React.ReactNode }) => {
@@ -132,8 +94,7 @@ const AdminLayout = ({ children }: { children: React.ReactNode }) => {
     pathname === "/admin/user-payment" ||
     pathname === "/admin/memnoy-refund/" ||
     pathname.startsWith("/admin/all-payment/") ||
-    pathname.startsWith("/admin/memnoy-refund") ||
-    pathname.startsWith("/admin/user-management/");
+    pathname.startsWith("/admin/memnoy-refund") 
 
   return (
     <div className="flex flex-col min-h-screen bg-[#F4F4F4]">

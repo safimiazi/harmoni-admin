@@ -21,17 +21,13 @@ const LoginForm = () => {
     const LoginData = { email, password };
     if (LoginData) {
       const response = await login(LoginData);
-      if (response?.data?.success && response?.data?.statusCode === 200) {
-        const user = response?.data?.data?.user;
-        const token = response?.data?.data?.access_token;
-        console.log(user, token);
-        const setCookies = cookies.set("token", token);
-        if (setCookies) {
-          dispatch(setUser({ user, token }));
-          navigate.push("/admin/dashboard");
-          toast.success("Login Successful");
-          // console.log(cookies.get("token"), "find token in cookies");
-        }
+
+      if (response?.data?.success) {
+
+        const token = response?.data?.data?.accessToken;
+        cookies.set("token", token, { expires: 7})
+        navigate.push("/admin")
+
       }
     }
   };
@@ -50,6 +46,7 @@ const LoginForm = () => {
               <input
                 type="email"
                 name="email"
+                value={"mohibullamiazi@gmail.com"}
                 placeholder="Enter your mail"
                 className="py-2 px-5 sm:py-2.5 sm:px-6 rounded-[12px] border-2"
               />
@@ -62,6 +59,7 @@ const LoginForm = () => {
               <input
                 name="password"
                 type="password"
+                value={"Admin123"}
                 placeholder="Enter your password"
                 className="py-2 px-5 sm:py-2.5 sm:px-6 rounded-[12px] border-2"
               />

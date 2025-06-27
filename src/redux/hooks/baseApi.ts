@@ -9,10 +9,12 @@ export const baseApi = createApi({
     prepareHeaders: (headers) => {
       const token = Cookies.get("token");
       if (token) {
-        headers.set("Authorization", `Bearer ${token}`);
+        headers.set("Authorization", `${token}`);
       }
+
       return headers;
     },
   }),
+  tagTypes: ["User","pricing"],
   endpoints: () => ({}),
 });
