@@ -5,21 +5,17 @@ import Image from "next/image";
 import Link from "next/link";
 import { IoIosSearch } from "react-icons/io";
 import { FaUserCheck } from "react-icons/fa6";
-import { IoSettingsOutline } from "react-icons/io5";
 import { TbLogout } from "react-icons/tb";
 import profile from "../../../assets/images/profile.png";
-import { useGetMeQuery, useLogoutAdminMutation } from "@/redux/features/user/adminApi";
+import { useGetMeQuery } from "@/redux/features/user/adminApi";
+import Cookies from "js-cookie";
 
 const AdminNavBar = () => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const { data: user, isLoading, error } = useGetMeQuery({});
-  const [logoutAdmin] = useLogoutAdminMutation()
 
   const handleLogout = async () => {
-        console.log("hello")
-
-    const res = await logoutAdmin({});
-    console.log(res)
+    Cookies.remove("token");
   }
 
   const toggleDropdown = () => setDropdownOpen(!isDropdownOpen);
@@ -28,19 +24,7 @@ const AdminNavBar = () => {
     <div className="w-full px-4 md:px-10 py-4 mx-auto h-full bg-[var(--color-purPole)] pt-2">
       <div className="w-full mt-2">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-0">
-          {/* Search Bar */}
-          <div className="px-2 w-full flex flex-col justify-start">
-            <div className="w-full max-w-[782px] h-[44px] bg-white border border-gray-300 rounded-[10px] px-4 flex items-center justify-between shadow-sm">
-              <div className="flex items-center gap-2 flex-grow">
-                <IoIosSearch size={20} className="text-gray-500" />
-                <input
-                  type="text"
-                  placeholder="Search..."
-                  className="w-full outline-none bg-transparent text-sm md:text-base placeholder:text-gray-400"
-                />
-              </div>
-            </div>
-          </div>
+      
 
           {/* Notification & Profile */}
           <div className="flex items-center justify-center gap-4 relative ml-auto">

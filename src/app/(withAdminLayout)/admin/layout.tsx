@@ -11,8 +11,8 @@ import {
   MdOutlineFeaturedPlayList,
 } from "react-icons/md";
 import { FaUserGroup } from "react-icons/fa6";
-import { RiArrowLeftSLine, RiArrowRightSLine } from "react-icons/ri";
-import { TbLogout } from "react-icons/tb";
+import { RiArrowLeftSLine, RiArrowRightSLine, RiPriceTag3Line } from "react-icons/ri";
+import { TbLogout, TbSettings2 } from "react-icons/tb";
 import { HiOutlineMenuAlt2 } from "react-icons/hi";
 
 import logo from "../../../assets/icon/logo1.png";
@@ -24,7 +24,7 @@ import { useAppDispatch } from "@/redux/hooks/redux-hook";
 import { logOut } from "@/redux/features/auth/authSlice";
 import cookies from "js-cookie";
 import { toast } from "sonner";
-import { PiArrowsInCardinalLight } from "react-icons/pi";
+import { PiArrowsInCardinalLight, PiCpuThin, PiPuzzlePieceThin } from "react-icons/pi";
 
 interface NavItem {
   title: string;
@@ -33,43 +33,46 @@ interface NavItem {
 }
 
 const navItems: NavItem[] = [
-  { title: "Dashboard", href: "/admin/dashboard", icon: MdDashboard },
   {
-    title: "All Users ",
+    title: "Dashboard",
+    href: "/admin/dashboard",
+    icon: MdDashboard,
+  },
+  {
+    title: "All Users",
     href: "/admin/user-management",
     icon: FaUserGroup,
   },
   {
     title: "Token Log",
     href: "/admin/token-log",
-    icon: MdOutlineFeaturedPlayList,
+    icon: MdOutlineFeaturedPlayList, // or BiLog if you prefer: icon: BiLog
   },
   {
     title: "Pricing Plan",
     href: "/admin/pricing-plan",
-    icon: PiArrowsInCardinalLight,
+    icon: RiPriceTag3Line,
   },
   {
     title: "LLM Provider",
     href: "/admin/llm-provider",
-    icon: PiArrowsInCardinalLight,
+    icon: PiCpuThin, // chip icon to represent LLM provider
   },
   {
     title: "LLM Model",
     href: "/admin/llm-model",
-    icon: PiArrowsInCardinalLight,
+    icon: PiPuzzlePieceThin, // representing model parts
   },
   {
     title: "Eachalab Model",
     href: "/admin/eachalab-model",
-    icon: PiArrowsInCardinalLight,
+    icon: PiPuzzlePieceThin, // same as model
   },
   {
     title: "Configure",
     href: "/admin/configure",
-    icon: PiArrowsInCardinalLight,
+    icon: TbSettings2, // more distinct than PiArrowsInCardinalLight
   },
-  
 ];
 
 const AdminLayout = ({ children }: { children: React.ReactNode }) => {
