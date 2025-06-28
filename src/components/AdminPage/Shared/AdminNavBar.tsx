@@ -13,9 +13,11 @@ const AdminNavBar = () => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const { data: user, isLoading, error } = useGetMeQuery({});
 
-  const handleLogout = async () => {
-    Cookies.remove("token");
-  }
+const handleLogout = async () => {
+  Cookies.remove("token");
+  window.location.reload(); // Full refresh to clear auth state
+};
+
 
   const toggleDropdown = () => setDropdownOpen(!isDropdownOpen);
 
