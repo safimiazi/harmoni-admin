@@ -5,28 +5,48 @@ import { useLoginMutation } from "@/redux/features/auth/authApi";
 import { Loader } from "lucide-react";
 import cookies from "js-cookie";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
+
+
 const LoginForm = () => {
   const navigate = useRouter();
   const [login, { isLoading }] = useLoginMutation();
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const form = e.target as HTMLFormElement;
-    const email = form.email.value;
-    const password = form.password.value;
-    // console.log("Hello world", email, password);
-    const LoginData = { email, password };
-    if (LoginData) {
-      const response = await login(LoginData);
+
+    try {
+      const form = e.target as HTMLFormElement;
+      const email = form.email.value;
+      const password = form.password.value;
+
+      const loginData = { email, password };
+
+      const response = await login(loginData);
+
+      if ("error" in response) {
+        toast.error((response.error as any).data.message || "Login failed please try again.");
+      }
+      console.log("ddd", response)
 
       if (response?.data?.success) {
-
-        const token = response?.data?.data?.accessToken;
-        cookies.set("token", token, { expires: 7})
-        navigate.push("/admin")
-
+        if (response?.data?.data?.role === "admin") {
+          const token = response.data.data.accessToken;
+          cookies.set("token", token, { expires: 7 });
+          navigate.push("/admin");
+        }
       }
+    } catch (error: any) {
+
+      // Optional: handle network/server error
+      const errorMessage =
+        error?.response?.data?.message || "Something went wrong during login.";
+
+      toast.error(errorMessage);
     }
   };
+
+
+
   return (
     <div className="w-full bg-[#331843] text-[#FDFCEE] font-Robot">
       <div className="flex items-center justify-center h-screen p-3">
@@ -42,7 +62,6 @@ const LoginForm = () => {
               <input
                 type="email"
                 name="email"
-                value={"mohibullamiazi@gmail.com"}
                 placeholder="Enter your mail"
                 className="py-2 px-5 sm:py-2.5 sm:px-6 rounded-[12px] border-2"
               />
@@ -55,7 +74,6 @@ const LoginForm = () => {
               <input
                 name="password"
                 type="password"
-                value={"Admin123"}
                 placeholder="Enter your password"
                 className="py-2 px-5 sm:py-2.5 sm:px-6 rounded-[12px] border-2"
               />

@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { IoIosSearch } from "react-icons/io";
 import { FaUserCheck } from "react-icons/fa6";
 import { TbLogout } from "react-icons/tb";
 import profile from "../../../assets/images/profile.png";
